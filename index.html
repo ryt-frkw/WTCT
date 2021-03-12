@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Word Test Creation Tool</title>
+    <link rel="stylesheet" href="main.css">
+    <script src='js/pdfmake.min.js'></script>
+    <script src='js/vfs_fonts.js'></script>
+    <link rel="manifest" href="./manifest.json">
+    <meta name="viewport" content="width=device-width">
+    <!-- iOS向けPWA設定-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="WTCT">
+    <link rel="apple-touch-icon" href="img/icon/152x152.png">
+    <!--  -->
+</head>
+<body>
+    <input type="checkbox" id="navTgl">
+    <label for="navTgl" class="open"><span></span></label>
+    <label for="navTgl" class="close"></label>
+    <nav class="menu">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="index.html">単語テスト作成</a></li>
+            <li><a href="main.html">アプリの使い方</a></li>
+            <li><a href="about.html">アプリの情報</a></li>
+            <li><a href="https://github.com/ryt-frkw/WTCT">GitHub - (外部リンク)</a></li>
+            <li><a href="licence.html">ライセンス</a></li>
+        </ul>
+    </nav>
+    <br><br>
+
+<section class="home" id="home">
+<button class="button1" type="button" id="runbut" onclick="location.href='main.html'">使い方を確認する</button>
+<br><br>
+<button class="button2" type="button" id="runbut" onclick="butrun1()">スペルを問う単語テストを作成する</button>
+<br><br>
+<button class="button2" type="button" id="runbut" onclick="butrun3()">和訳を問う単語テストを作成する</button>
+<br><br>
+<button class="button2" type="button" id="runbut" onclick="butrun2()">解答を作成する</button>
+  <br><br>
+  <p>記号等は半角以外を入力すると文字化けします。</p>
+  <input type="text" size="60" class="textbox" id="spell_1" value="単語のスペル"><input type="text" size="60" class="textbox" id="jatext_1" value="単語の意味(和訳)"><br>
+  <input type="text" size="60" class="textbox" id="spell_2"><input type="text" size="60" class="textbox" id="jatext_2"><br>
+  <input type="text" size="60" class="textbox" id="spell_3"><input type="text" size="60" class="textbox" id="jatext_3"><br>
+  <input type="text" size="60" class="textbox" id="spell_4"><input type="text" size="60" class="textbox" id="jatext_4"><br>
+  <input type="text" size="60" class="textbox" id="spell_5"><input type="text" size="60" class="textbox" id="jatext_5"><br>
+  <input type="text" size="60" class="textbox" id="spell_6"><input type="text" size="60" class="textbox" id="jatext_6"><br>
+  <input type="text" size="60" class="textbox" id="spell_7"><input type="text" size="60" class="textbox" id="jatext_7"><br>
+  <input type="text" size="60" class="textbox" id="spell_8"><input type="text" size="60" class="textbox" id="jatext_8"><br>
+  <input type="text" size="60" class="textbox" id="spell_9"><input type="text" size="60" class="textbox" id="jatext_9"><br>
+  <input type="text" size="60" class="textbox" id="spell_10"><input type="text" size="60" class="textbox" id="jatext_10"><br>
+  <input type="text" size="60" class="textbox" id="spell_11"><input type="text" size="60" class="textbox" id="jatext_11"><br>
+  <input type="text" size="60" class="textbox" id="spell_12"><input type="text" size="60" class="textbox" id="jatext_12"><br>
+  <input type="text" size="60" class="textbox" id="spell_13"><input type="text" size="60" class="textbox" id="jatext_13"><br>
+  <input type="text" size="60" class="textbox" id="spell_14"><input type="text" size="60" class="textbox" id="jatext_14"><br>
+  <input type="text" size="60" class="textbox" id="spell_15"><input type="text" size="60" class="textbox" id="jatext_15"><br>
+  <input type="text" size="60" class="textbox" id="spell_16"><input type="text" size="60" class="textbox" id="jatext_16"><br>
+  <input type="text" size="60" class="textbox" id="spell_17"><input type="text" size="60" class="textbox" id="jatext_17"><br>
+  <input type="text" size="60" class="textbox" id="spell_18"><input type="text" size="60" class="textbox" id="jatext_18"><br>
+  <input type="text" size="60" class="textbox" id="spell_19"><input type="text" size="60" class="textbox" id="jatext_19"><br>
+  <input type="text" size="60" class="textbox" id="spell_20"><input type="text" size="60" class="textbox" id="jatext_20"><br>
+  <input type="text" size="60" class="textbox" id="spell_21"><input type="text" size="60" class="textbox" id="jatext_21"><br>
+  <input type="text" size="60" class="textbox" id="spell_22"><input type="text" size="60" class="textbox" id="jatext_22"><br>
+  <input type="text" size="60" class="textbox" id="spell_23"><input type="text" size="60" class="textbox" id="jatext_23"><br>
+  <input type="text" size="60" class="textbox" id="spell_24"><input type="text" size="60" class="textbox" id="jatext_24"><br>
+  <input type="text" size="60" class="textbox" id="spell_25"><input type="text" size="60" class="textbox" id="jatext_25"><br>
+<p>単語とその和訳は、最大25個まで設定できます。</p>
+</section>
+<script>
+    function butrun1() {
+        pdfMake.fonts = {
+            GenShin: {
+                normal: 'GenShinGothic-Normal-Sub.ttf',
+                bold: 'GenShinGothic-Normal-Sub.ttf',
+                italics: 'GenShinGothic-Normal-Sub.ttf',
+                bolditalics: 'GenShinGothic-Normal-Sub.ttf'
+            }
+        }
+
+        var table_content = {
+            table: {
+                widths: '*',
+                body: [
+                    []
+                ]
+            }
+        };
+        var table_head = ['スペル', '意味'];
+        var head_tr = [];
+        for (let v of table_head) {
+            head_tr.push({
+                text: v,
+                fillColor: '#dddddd',
+                style: ["tableHeader", "tableCell"]
+            });
+        };
+        table_content["table"]["body"][0] = head_tr;
+        var table_body = [
+            [" ", " " + jatext_1.value],
+            [" ", " " + jatext_2.value],
+            [" ", " " + jatext_3.value],
+            [" ", " " + jatext_4.value],
+            [" ", " " + jatext_5.value],
+            [" ", " " + jatext_6.value],
+            [" ", " " + jatext_7.value],
+            [" ", " " + jatext_8.value],
+            [" ", " " + jatext_9.value],
+            [" ", " " + jatext_10.value],
+            [" ", " " + jatext_11.value],
+            [" ", " " + jatext_12.value],
+            [" ", " " + jatext_13.value],
+            [" ", " " + jatext_14.value],
+            [" ", " " + jatext_15.value],
+            [" ", " " + jatext_16.value],
+            [" ", " " + jatext_17.value],
+            [" ", " " + jatext_18.value],
+            [" ", " " + jatext_19.value],
+            [" ", " " + jatext_20.value],
+            [" ", " " + jatext_21.value],
+            [" ", " " + jatext_22.value],
+            [" ", " " + jatext_23.value],
+            [" ", " " + jatext_24.value],
+            [" ", " " + jatext_25.value]
+        ]
+            ;
+        for (let a of table_body) {
+            var tr = [];
+            for (let v of a) {
+                tr.push({
+                    text: v,
+                    fillColor: '#fff',
+                    style: ["tableCell"]
+                });
+            };
+            table_content["table"]["body"].push(tr);
+        };
+        pdfMake.createPdf(
+            {
+                content: [{
+                    text: "単語テスト - スペル\n\n\n[　　　　/ 100 ]\n\n\n\n"
+                },
+                    table_content,
+                { text: "4点 * 25問" }
+                ],
+                defaultStyle: {
+                    font: 'GenShin'
+                }
+            }).download("英単語テスト_スペル.pdf");
+    }
+    function butrun2() {
+        pdfMake.fonts = {
+            GenShin: {
+                normal: 'GenShinGothic-Normal-Sub.ttf',
+                bold: 'GenShinGothic-Normal-Sub.ttf',
+                italics: 'GenShinGothic-Normal-Sub.ttf',
+                bolditalics: 'GenShinGothic-Normal-Sub.ttf'
+            }
+        }
+
+        var table_content = {
+            table: {
+                widths: '*',
+                body: [
+                    []
+                ]
+            }
+        };
+        var table_head = ['スペル', '意味'];
+        var head_tr = [];
+        for (let v of table_head) {
+            head_tr.push({
+                text: v,
+                fillColor: '#dddddd',
+                style: ["tableHeader", "tableCell"]
+            });
+        };
+        table_content["table"]["body"][0] = head_tr;
+        var table_body = [
+            [" " + spell_1.value, " " + jatext_1.value],
+            [" " + spell_2.value, " " + jatext_2.value],
+            [" " + spell_3.value, " " + jatext_3.value],
+            [" " + spell_4.value, " " + jatext_4.value],
+            [" " + spell_5.value, " " + jatext_5.value],
+            [" " + spell_6.value, " " + jatext_6.value],
+            [" " + spell_7.value, " " + jatext_7.value],
+            [" " + spell_8.value, " " + jatext_8.value],
+            [" " + spell_9.value, " " + jatext_9.value],
+            [" " + spell_10.value, " " + jatext_10.value],
+            [" " + spell_11.value, " " + jatext_11.value],
+            [" " + spell_12.value, " " + jatext_12.value],
+            [" " + spell_13.value, " " + jatext_13.value],
+            [" " + spell_14.value, " " + jatext_14.value],
+            [" " + spell_15.value, " " + jatext_15.value],
+            [" " + spell_16.value, " " + jatext_16.value],
+            [" " + spell_17.value, " " + jatext_17.value],
+            [" " + spell_18.value, " " + jatext_18.value],
+            [" " + spell_19.value, " " + jatext_19.value],
+            [" " + spell_20.value, " " + jatext_20.value],
+            [" " + spell_21.value, " " + jatext_21.value],
+            [" " + spell_22.value, " " + jatext_22.value],
+            [" " + spell_23.value, " " + jatext_23.value],
+            [" " + spell_24.value, " " + jatext_24.value],
+            [" " + spell_25.value, " " + jatext_25.value]
+        ]
+            ;
+        for (let a of table_body) {
+            var tr = [];
+            for (let v of a) {
+                tr.push({
+                    text: v,
+                    fillColor: '#fff',
+                    style: ["tableCell"]
+                });
+            };
+            table_content["table"]["body"].push(tr);
+        };
+        pdfMake.createPdf(
+            {
+                content: [{
+                    text: "単語テスト\n\n\n[模範解答/ 100 ]\n\n\n\n"
+                },
+                    table_content,
+                { text: "4点 * 25問" }
+                ],
+                defaultStyle: {
+                    font: 'GenShin'
+                }
+            }).download("英単語テスト_解答.pdf");
+    }
+    function butrun3() {
+        pdfMake.fonts = {
+            GenShin: {
+                normal: 'GenShinGothic-Normal-Sub.ttf',
+                bold: 'GenShinGothic-Normal-Sub.ttf',
+                italics: 'GenShinGothic-Normal-Sub.ttf',
+                bolditalics: 'GenShinGothic-Normal-Sub.ttf'
+            }
+        }
+
+        var table_content = {
+            table: {
+                widths: '*',
+                body: [
+                    []
+                ]
+            }
+        };
+        var table_head = ['スペル', '意味'];
+        var head_tr = [];
+        for (let v of table_head) {
+            head_tr.push({
+                text: v,
+                fillColor: '#dddddd',
+                style: ["tableHeader", "tableCell"]
+            });
+        };
+        table_content["table"]["body"][0] = head_tr;
+        var table_body = [
+            [" " + spell_1.value, " "],
+            [" " + spell_2.value, " "],
+            [" " + spell_3.value, " "],
+            [" " + spell_4.value, " "],
+            [" " + spell_5.value, " "],
+            [" " + spell_6.value, " "],
+            [" " + spell_7.value, " "],
+            [" " + spell_8.value, " "],
+            [" " + spell_9.value, " "],
+            [" " + spell_10.value, " "],
+            [" " + spell_11.value, " "],
+            [" " + spell_12.value, " "],
+            [" " + spell_13.value, " "],
+            [" " + spell_14.value, " "],
+            [" " + spell_15.value, " "],
+            [" " + spell_16.value, " "],
+            [" " + spell_17.value, " "],
+            [" " + spell_18.value, " "],
+            [" " + spell_19.value, " "],
+            [" " + spell_20.value, " "],
+            [" " + spell_21.value, " "],
+            [" " + spell_22.value, " "],
+            [" " + spell_23.value, " "],
+            [" " + spell_24.value, " "],
+            [" " + spell_25.value, " "]
+        ]
+            ;
+        for (let a of table_body) {
+            var tr = [];
+            for (let v of a) {
+                tr.push({
+                    text: v,
+                    fillColor: '#fff',
+                    style: ["tableCell"]
+                });
+            };
+            table_content["table"]["body"].push(tr);
+        };
+        pdfMake.createPdf(
+            {
+                content: [{
+                    text: "単語テスト - 和訳\n\n\n[　　　　/ 100 ]\n\n\n\n"
+                },
+                    table_content,
+                { text: "4点 * 25問" }
+                ],
+                defaultStyle: {
+                    font: 'GenShin'
+                }
+            }).download("英単語テスト_和訳.pdf");
+    }
+
+</script>
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js').then(registration => {
+            console.log('ServiceWorker registration successful.');
+        }).catch(err => {
+            console.log('ServiceWorker registration failed.');
+        });
+    }
+</script>
+</body>
+</html>

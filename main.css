@@ -1,0 +1,194 @@
+@charset "utf-8";
+
+
+button.button1 {
+    /* 文字サイズを1.4emに指定 */
+    font-size: 0.7em;
+
+    /* 文字の太さをboldに指定 */
+    font-weight: bold;
+
+    /* 縦方向に10px、
+     * 横方向に30pxの余白を指定 */
+    padding: 10px 30px;
+
+    /* 背景色を濃い青色に指定 */
+    background-color: #248;
+
+    /* 文字色を白色に指定 */
+    color: #fff;
+
+    /* ボーダーをなくす */
+    border-style: none;
+
+    width: 100%;
+}
+
+
+button.button2 {
+    /* 文字サイズを1.4emに指定 */
+    font-size: 0.7em;
+
+    /* 文字の太さをboldに指定 */
+    font-weight: bold;
+
+    /* 縦方向に10px、
+     * 横方向に30pxの余白を指定 */
+    padding: 10px 30px;
+
+    /* 背景色を濃い青色に指定 */
+    background-color: #248;
+
+    /* 文字色を白色に指定 */
+    color: #fff;
+
+    /* ボーダーをなくす */
+    border-style: none;
+
+    width: 100%;
+}
+
+
+.home spell_label {
+  color: #000000;
+  background: #ffffff;
+}
+
+.home {
+  padding: 30px;
+  background-color: #ffffff;
+}
+
+.home h2 {
+  color: #000000;
+  border-color: #005766;
+}
+
+.home p {
+  color: #000000;
+  clear: left;
+  margin: 20px;
+}
+
+.license p {
+    font-size: 5px;
+}
+
+.license h3 {
+   font-size: 10px; 
+}
+
+input.textbox{
+  width: 46%;
+}
+
+
+/* https://lopan.jp/css-animation-drawer/ */
+/* :::::: toggle button :::::: */
+#navTgl {
+	display: none;
+}
+label {
+	cursor: pointer;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+.open {
+	z-index: 2;
+	width: 48px;
+	height: 48px;
+	background: #00aeef;
+	transition: background .6s, transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.open::before,
+.open::after {
+	content: "";
+}
+.open span,
+.open::before,
+.open::after {
+	content: "";
+	position: absolute;
+	top: calc(50% - 1px);
+	left: 30%;
+	width: 40%;
+	border-bottom: 2px solid white;
+	transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.open::before {
+	transform: translateY(-8px);
+}
+.open::after {
+	transform: translateY(8px);
+}
+.close {
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	transition: background .6s;
+}
+#navTgl:checked + .open {
+	background: indianRed;
+	transform: translateX(250px);
+}
+#navTgl:checked + .open span {
+	transform: scaleX(0);
+}
+#navTgl:checked + .open::before {
+	transform: rotate(45deg);
+}
+#navTgl:checked + .open::after {
+	transform: rotate(-45deg);
+}
+#navTgl:checked ~ .close {
+	pointer-events: auto;
+	background: rgba(0,0,0,.3);
+}
+/* :::::: drawer menu :::::: */
+.menu {
+	z-index: 1;
+	position: fixed;
+	overflow: auto;
+	top: 0;
+	left: 0;
+	width: 250px;
+	height: 100%;
+	margin: 0;
+	padding: 10px;
+	box-sizing: border-box;
+	background: rgba(0,0,0,.6);
+	transform: translateX(-100%);
+	transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.menu h2,
+.menu a {
+	color: white;
+}
+.menu h2 {
+	text-align: center;
+}
+.menu ul {
+	margin: 0;
+	padding: 0;
+}
+.menu li {
+	font-size: .8em;
+	line-height: 1.4;
+}
+.menu li:not(:first-child) {
+	border-top: 1px solid rgba(255,255,255,.6);
+}
+.menu a {
+	display: block;
+	padding: 1em 2em;
+	text-decoration: inherit;
+	transition: background .6s;
+}
+.menu a:hover {
+	background: black;
+}
+#navTgl:checked ~ .menu {
+	transform: none;
+}
