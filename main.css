@@ -79,7 +79,7 @@ button.button2 {
 }
 
 input.textbox{
-  width: 46%;
+  width: 43%;/*<----Window Sizeに合わせる*/
 }
 
 
