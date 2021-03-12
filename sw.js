@@ -21,8 +21,6 @@ const urlsToCache = [
     './js/fonts/Roboto/Roboto-MediumItalic.ttf',
     './js/fonts/Roboto/Regular.ttf',
 ];
-self.addEventListener('fetch', function(e) {
-})
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches
