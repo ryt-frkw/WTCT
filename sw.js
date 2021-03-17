@@ -12,8 +12,6 @@ const urlsToCache = [
     './img/icon/152x152.png',
     './img/icon/192x192.png',
     './img/icon/512x512.png',
-    './js/pdfmake.js',
-    './js/pdfmake.js.map',
     './js/pdfmake.min.js',
     './js/pdfmake.min.js.map',
     './js/vfs_fonts.js',
