@@ -7,6 +7,7 @@ const urlsToCache = [
     './main.html',
     './about.html',
     './licence.html',
+    './download.html',
     './main.css',
     './img/icon/152x152.png',
     './img/icon/192x192.png',
@@ -20,6 +21,7 @@ const urlsToCache = [
     './js/fonts/Roboto/Roboto-Medium.ttf',
     './js/fonts/Roboto/Roboto-MediumItalic.ttf',
     './js/fonts/Roboto/Regular.ttf',
+    './pdf/WordTree3000.pdf',
 ];
 self.addEventListener('install', (event) => {
     event.waitUntil(
